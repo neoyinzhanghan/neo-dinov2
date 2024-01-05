@@ -196,7 +196,7 @@ def do_train(cfg, model, dataset_str, resume=False):
     # setup data loader
 
     dataset = make_dataset(
-        dataset_str=dataset_str # cfg.train.dataset_path,
+        dataset_str=dataset_str, # cfg.train.dataset_path,
         transform=data_transform,
         target_transform=lambda _: (),
     )
