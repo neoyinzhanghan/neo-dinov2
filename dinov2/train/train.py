@@ -57,6 +57,9 @@ For python-based LazyConfig, use "path.key=value".
 
     parser.add_argument("--local-rank", default=0, type=int, help="Variable for distributed computing.")
 
+    parser.add_argument("--root", type=str, help="Root directory of the dataset.")
+    parser.add_argument("--extra", type=str, help="Extra directory of the dataset.")
+
     return parser
 
 
