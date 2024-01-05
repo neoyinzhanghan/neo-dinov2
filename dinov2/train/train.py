@@ -57,8 +57,7 @@ For python-based LazyConfig, use "path.key=value".
 
     parser.add_argument("--local-rank", default=0, type=int, help="Variable for distributed computing.")
 
-    parser.add_argument("--root", type=str, help="Root directory of the dataset.")
-    parser.add_argument("--extra", type=str, help="Extra directory of the dataset.")
+    parser.add_argument("dataset_str", type=str, help="Dataset to use for training")
 
     return parser
 
@@ -136,7 +135,7 @@ def do_test(cfg, model, iteration):
         torch.save({"teacher": new_state_dict}, teacher_ckp_path)
 
 
-def do_train(cfg, model, resume=False):
+def do_train(cfg, model, dataset_str, resume=False):
     model.train()
     inputs_dtype = torch.half
     fp16_scaler = model.fp16_scaler  # for mixed precision training
@@ -315,7 +314,7 @@ def main(args):
         )
         return do_test(cfg, model, f"manual_{iteration}")
 
-    do_train(cfg, model, resume=not args.no_resume)
+    do_train(cfg, model, args.dataset_str, resume=not args.no_resume)
 
 
 if __name__ == "__main__":
