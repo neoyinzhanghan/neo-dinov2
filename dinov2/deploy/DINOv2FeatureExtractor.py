@@ -39,3 +39,9 @@ class DINOv2FeatureExtractor(nn.Module):
         with torch.no_grad():
             outputs = self.extraction_model(**inputs)
         return outputs.last_hidden_state
+
+
+def load_model(ckpt_path: str):
+    """Load the DINOv2 Feature Extractor model from the checkpoint file."""
+
+    return DINOv2FeatureExtractor(ckpt_path)
