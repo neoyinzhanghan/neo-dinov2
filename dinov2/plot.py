@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import os
 
 # Since the training metrics are now known to be in a JSON file, let's read the JSON file into a pandas DataFrame
-json_file_path = "/home/bear/Documents/neo/neo-dinov2/log/training_metrics.json"
+json_file_path = "/Users/neo/Documents/MODS/training_metrics.json"
 data = pd.read_json(json_file_path, lines=True)
 
 # Now, we will plot each column against the iteration number
@@ -28,6 +28,3 @@ for column in data.columns:
         plot_path = os.path.join(plot_directory, plot_filename)
         plt.savefig(plot_path)
         plt.close()
-
-# Return the directory where the plots are saved
-plot_directory
